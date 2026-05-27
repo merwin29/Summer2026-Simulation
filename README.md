@@ -6,6 +6,7 @@ We will devide the path of the mine in straght lines doe simplicity, and then ap
   MOD1.1: This will focus on the segments, like each dinvidual segment
   
   Each segment must have:
+   
     Distance/Lenght
     Width
     Slope
@@ -19,9 +20,10 @@ We will devide the path of the mine in straght lines doe simplicity, and then ap
 
   
 MODULE 2: Robot program:
-This wil aactually make the robot/gaul representation
+This will actually make the robot/gaul representation
 
   MOD2.1: This will focus on the actual robot program, it should have:
+    
     Payload
     Energy Consumption
     Turn Rates
@@ -39,34 +41,34 @@ This will be the module that will show a very simple 2D represetation of the sim
 
 CHATGPT recomends:
 
-MAIN SIMULATION
-│
-├── Rover Module
-│   ├── Dynamics
-│   ├── Motor System
-│   ├── Battery Model
-│   ├── Energy Consumption
-│   └── Sensor Models
-│
-├── Mine Module
-│   ├── Terrain
-│   ├── Slopes
-│   ├── Obstacles
-│   ├── Friction Zones
-│   └── Environmental Conditions
-│
-├── Optimization Module
-│   ├── Velocity Inputs
-│   ├── Route Optimization
-│   └── Energy Strategy
-│
-├── Data Logging Module
-│   ├── Power Usage
-│   ├── Travel Time
-│   ├── Battery Drain
-│   └── Efficiency Metrics
-│
-└── Visualization Module
+    MAIN SIMULATION
+    │
+    ├── Rover Module
+    │   ├── Dynamics
+    │   ├── Motor System
+    │   ├── Battery Model
+    │   ├── Energy Consumption
+    │   └── Sensor Models
+    │
+    ├── Mine Module
+    │   ├── Terrain
+    │   ├── Slopes
+    │   ├── Obstacles
+    │   ├── Friction Zones
+    │   └── Environmental Conditions
+    │
+    ├── Optimization Module
+    │   ├── Velocity Inputs
+    │   ├── Route Optimization
+    │   └── Energy Strategy
+    │
+    ├── Data Logging Module
+    │   ├── Power Usage
+    │   ├── Travel Time
+    │   ├── Battery Drain
+    │   └── Efficiency Metrics
+    │
+    └── Visualization Module
 
 
 INPUTS and OUTPUTS EARLY
@@ -77,20 +79,25 @@ Example:
 
 Rover Module
 Inputs
-velocity command
-terrain slope
-payload weight
+
+    velocity command
+    terrain slope
+    payload weight
+
 Outputs
-power consumption
-position
-battery drain
-wheel torque
+
+    power consumption
+    position
+    battery drain
+    wheel torque
 
 
 Mine Module
 Inputs
-rover position
+    
+    rover position
 Outputs
-terrain type
-slope
-friction coefficient
+
+    terrain type
+    slope
+    friction coefficient
