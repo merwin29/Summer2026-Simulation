@@ -1,2 +1,53 @@
 //Add all the variables you create in the other files
 //Even if they are constant, ALL variables MUSt be here to keep track of them
+
+
+%% mineParameters.m
+%======================================================
+% MINE CONFIGURATION FILE
+%
+% Edit this file to change the mine layout.
+%======================================================
+
+% Mine origin
+
+mine.origin = [0 0 0];
+
+%======================================================
+% SEGMENT DEFINITIONS
+%======================================================
+
+mine.segment(1).id = 1;
+mine.segment(1).length = 100;
+mine.segment(1).width = 20;
+mine.segment(1).direction = 45;
+mine.segment(1).slope = 5;
+mine.segment(1).type = 1;
+
+mine.segment(2).id = 2;
+mine.segment(2).length = 80;
+mine.segment(2).width = 20;
+mine.segment(2).direction = 90;
+mine.segment(2).slope = -3;
+mine.segment(2).type = 1;
+
+mine.segment(3).id = 3;
+mine.segment(3).length = 150;
+mine.segment(3).width = 25;
+mine.segment(3).direction = 120;
+mine.segment(3).slope = 2;
+mine.segment(3).type = 2;
+
+mine.segment(4).id = 4;
+mine.segment(4).length = 60;
+mine.segment(4).width = 30;
+mine.segment(4).direction = 180;
+mine.segment(4).slope = 0;
+mine.segment(4).type = 3;
+
+mine.segment(5).id = 5;
+mine.segment(5).length = 90;
+mine.segment(5).width = 25;
+mine.segment(5).direction = 270;
+mine.segment(5).slope = -4;
+mine.segment(5).type = 4;
