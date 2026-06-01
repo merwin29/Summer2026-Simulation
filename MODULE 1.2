@@ -1,0 +1,53 @@
+
+
+%% buildMine.m
+
+clear
+clc
+
+%======================================================
+% LOAD CONFIGURATION
+%======================================================
+
+mineParameters
+
+numSegments = length(mine.segment);
+
+currentPoint = mine.origin;
+
+segments = struct([]);
+
+%======================================================
+% BUILD ALL SEGMENTS
+%======================================================
+
+for i = 1:numSegments
+
+    id = mine.segment(i).id;
+
+    length_m = mine.segment(i).length;
+
+    width_m = mine.segment(i).width;
+
+    direction_deg = mine.segment(i).direction;
+
+    slope_pct = mine.segment(i).slope;
+
+    type = mine.segment(i).type;
+
+    seg = createSegment( ...
+        id,...
+        currentPoint,...
+        length_m,...
+        width_m,...
+        direction_deg,...
+        slope_pct,...
+        type);
+
+    segments(i) = seg;
+
+    currentPoint = seg.end;
+
+end
+
+disp("Mine successfully built.")
