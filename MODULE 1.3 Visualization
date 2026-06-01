@@ -1,0 +1,27 @@
+function visualizeMine(segments)
+
+figure
+
+hold on
+grid on
+axis equal
+
+xlabel('X (m)')
+ylabel('Y (m)')
+zlabel('Elevation (m)')
+
+title('Mine Layout')
+
+for i = 1:length(segments)
+
+    plot3( ...
+        [segments(i).start(1) segments(i).end(1)], ...
+        [segments(i).start(2) segments(i).end(2)], ...
+        [segments(i).start(3) segments(i).end(3)], ...
+        'LineWidth',3)
+
+end
+
+view(3)
+
+end
