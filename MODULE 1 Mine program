@@ -1,1 +1,55 @@
 
+function segment = createSegment( ...
+    id,...
+    startPoint,...
+    length_m,...
+    width_m,...
+    direction_deg,...
+    slope_pct,...
+    type)
+
+%======================================================
+% START COORDINATES
+%======================================================
+
+x0 = startPoint(1);
+y0 = startPoint(2);
+z0 = startPoint(3);
+
+%======================================================
+% CALCULATE DISPLACEMENT
+%======================================================
+
+dx = length_m * cosd(direction_deg);
+dy = length_m * sind(direction_deg);
+
+dz = length_m * (slope_pct / 100);
+
+%======================================================
+% ENDPOINT
+%======================================================
+
+endPoint = [
+    x0 + dx,...
+    y0 + dy,...
+    z0 + dz
+];
+
+%======================================================
+% STORE SEGMENT INFORMATION
+%======================================================
+
+segment.id = id;
+
+segment.start = startPoint;
+segment.end = endPoint;
+
+segment.length = length_m;
+segment.width = width_m;
+
+segment.direction = direction_deg;
+segment.slope = slope_pct;
+
+segment.type = type;
+
+end
