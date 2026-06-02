@@ -101,3 +101,15 @@ Outputs
     terrain type
     slope
     friction coefficient
+
+## MATLAB / Simulink Baseline Model
+
+A baseline-only haulage model has been added for the first Simulink walkthrough:
+
+`matlab-simulink/baseline-operation/HaulageBaselineOperationSimulation.slx`
+
+This model focuses on normal haul truck operation before adding the optimized speed advisor. It includes route scenario selection, vehicle configuration, road surface assumptions, baseline speed control, safety limits, motion, fuel/SFC calculation, dashboards, and logs.
+
+Start here:
+
+`matlab-simulink/baseline-operation/README.md`

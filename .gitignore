@@ -1,0 +1,10 @@
+# MATLAB / Simulink generated files
+slprj/
+**/slprj/
+*.asv
+*.autosave
+*.m~
+
+# Local desktop clutter
+Thumbs.db
+.DS_Store
