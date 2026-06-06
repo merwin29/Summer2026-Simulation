@@ -1,0 +1,2 @@
+totalDistance_m,productiveTonKm,baselineTime_s,optimizedTime_s,timeDelta_s,baselineFuel_l,optimizedFuel_l,fuelSaved_l,fuelSaved_pct,baselineSfc_l_per_tkm,optimizedSfc_l_per_tkm,sfcReduction_l_per_tkm,sfcReduction_pct
+3560,552.42,786,693,-93,18.3456294118139,15.965338835037,2.38029057677687,12.974701076454,0.0332095677415985,0.0289007255983436,0.0043088421432549,12.974701076454

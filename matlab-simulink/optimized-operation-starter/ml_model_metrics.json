@@ -1,0 +1,11 @@
+{
+  "model_name": "sklearn_hgb_monotone",
+  "monotonic_constraints_enforced": true,
+  "train_rows": 195931,
+  "test_rows": 48983,
+  "train_r2": 0.7869680401135046,
+  "train_mae_l_per_tkm": 0.0032989784504932076,
+  "test_r2": 0.7824629125419642,
+  "test_mae_l_per_tkm": 0.0033627610585351625,
+  "target_transform": "log"
+}

@@ -113,3 +113,11 @@ This model focuses on normal haul truck operation before adding the optimized sp
 Start here:
 
 `matlab-simulink/baseline-operation/README.md`
+
+## MATLAB / Simulink Optimized Starter
+
+The next-stage starter package for adding the ML speed policy is here:
+
+`matlab-simulink/optimized-operation-starter/README.md`
+
+This folder does not provide a finished optimized Simulink model. It provides the ML speed policy outputs, reference results, and a weekend assignment for building the optimized speed-advisor branch from the baseline model.

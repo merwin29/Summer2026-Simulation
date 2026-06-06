@@ -1,0 +1,133 @@
+{
+  "eligible_rows": 153828,
+  "baseline_mean_l_per_tkm": 0.016379347806935528,
+  "baseline_weighted_l_per_tkm": 0.014800175221860013,
+  "policy_mean_l_per_tkm": 0.010190057473932946,
+  "policy_weighted_l_per_tkm": 0.009559534692066095,
+  "absolute_reduction_l_per_tkm": 0.006189290333002582,
+  "relative_reduction_pct": 37.78715981830389,
+  "weighted_absolute_reduction_l_per_tkm": 0.005240640529793918,
+  "weighted_relative_reduction_pct": 35.40931408739971,
+  "group_table": [
+    {
+      "GRADE": "Downhill",
+      "payload_band": "140-180",
+      "rows": 14245,
+      "observed_speed_mean_kph": 17.314250616318333,
+      "policy_speed_kph": 23.86436991695252,
+      "baseline_sfc_mean_l_per_tkm": 0.016572555438165965,
+      "policy_sfc_mean_l_per_tkm": 0.011303826500524805,
+      "relative_sfc_change_pct": -31.791892066974036
+    },
+    {
+      "GRADE": "Downhill",
+      "payload_band": "180-220",
+      "rows": 14604,
+      "observed_speed_mean_kph": 16.206457104997575,
+      "policy_speed_kph": 22.91079587925706,
+      "baseline_sfc_mean_l_per_tkm": 0.013779889067282088,
+      "policy_sfc_mean_l_per_tkm": 0.009132130688353432,
+      "relative_sfc_change_pct": -33.72856164687085
+    },
+    {
+      "GRADE": "Downhill",
+      "payload_band": "220-260",
+      "rows": 12343,
+      "observed_speed_mean_kph": 14.206157551988486,
+      "policy_speed_kph": 22.0,
+      "baseline_sfc_mean_l_per_tkm": 0.012283291910012638,
+      "policy_sfc_mean_l_per_tkm": 0.007246178315969473,
+      "relative_sfc_change_pct": -41.007847333964264
+    },
+    {
+      "GRADE": "Downhill",
+      "payload_band": "260-300",
+      "rows": 3719,
+      "observed_speed_mean_kph": 13.661479622539845,
+      "policy_speed_kph": 22.5,
+      "baseline_sfc_mean_l_per_tkm": 0.011061603874747935,
+      "policy_sfc_mean_l_per_tkm": 0.006138155002836213,
+      "relative_sfc_change_pct": -44.50935802493573
+    },
+    {
+      "GRADE": "Flat",
+      "payload_band": "140-180",
+      "rows": 29613,
+      "observed_speed_mean_kph": 21.675152750182647,
+      "policy_speed_kph": 27.7054122419284,
+      "baseline_sfc_mean_l_per_tkm": 0.013155771262329233,
+      "policy_sfc_mean_l_per_tkm": 0.008949359152655949,
+      "relative_sfc_change_pct": -31.973892110134923
+    },
+    {
+      "GRADE": "Flat",
+      "payload_band": "180-220",
+      "rows": 14101,
+      "observed_speed_mean_kph": 21.08541738183902,
+      "policy_speed_kph": 27.2374745419987,
+      "baseline_sfc_mean_l_per_tkm": 0.01161789526635409,
+      "policy_sfc_mean_l_per_tkm": 0.00796413985562125,
+      "relative_sfc_change_pct": -31.449374666978354
+    },
+    {
+      "GRADE": "Flat",
+      "payload_band": "220-260",
+      "rows": 4958,
+      "observed_speed_mean_kph": 20.182438837236482,
+      "policy_speed_kph": 27.33579231532566,
+      "baseline_sfc_mean_l_per_tkm": 0.009560655874051693,
+      "policy_sfc_mean_l_per_tkm": 0.006118959324116541,
+      "relative_sfc_change_pct": -35.99854021810537
+    },
+    {
+      "GRADE": "Flat",
+      "payload_band": "260-300",
+      "rows": 1861,
+      "observed_speed_mean_kph": 19.685757262148996,
+      "policy_speed_kph": 27.5,
+      "baseline_sfc_mean_l_per_tkm": 0.008366564899001576,
+      "policy_sfc_mean_l_per_tkm": 0.00521803811440098,
+      "relative_sfc_change_pct": -37.63225197686957
+    },
+    {
+      "GRADE": "Uphill",
+      "payload_band": "140-180",
+      "rows": 12037,
+      "observed_speed_mean_kph": 12.464062467367196,
+      "policy_speed_kph": 17.5,
+      "baseline_sfc_mean_l_per_tkm": 0.022242429685959016,
+      "policy_sfc_mean_l_per_tkm": 0.014431878767958971,
+      "relative_sfc_change_pct": -35.115547304306475
+    },
+    {
+      "GRADE": "Uphill",
+      "payload_band": "180-220",
+      "rows": 16800,
+      "observed_speed_mean_kph": 10.600050181156744,
+      "policy_speed_kph": 15.0,
+      "baseline_sfc_mean_l_per_tkm": 0.02231154624014734,
+      "policy_sfc_mean_l_per_tkm": 0.013975421536912428,
+      "relative_sfc_change_pct": -37.3623800587828
+    },
+    {
+      "GRADE": "Uphill",
+      "payload_band": "220-260",
+      "rows": 22504,
+      "observed_speed_mean_kph": 9.065950327972525,
+      "policy_speed_kph": 13.5,
+      "baseline_sfc_mean_l_per_tkm": 0.021475090129965697,
+      "policy_sfc_mean_l_per_tkm": 0.012040853088143542,
+      "relative_sfc_change_pct": -43.93107076490404
+    },
+    {
+      "GRADE": "Uphill",
+      "payload_band": "260-300",
+      "rows": 7043,
+      "observed_speed_mean_kph": 8.430305256289826,
+      "policy_speed_kph": 15.5,
+      "baseline_sfc_mean_l_per_tkm": 0.0209164772884603,
+      "policy_sfc_mean_l_per_tkm": 0.009090003722943297,
+      "relative_sfc_change_pct": -56.54142139910775
+    }
+  ]
+}
