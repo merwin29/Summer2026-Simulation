@@ -121,3 +121,13 @@ The next-stage starter package for adding the ML speed policy is here:
 `matlab-simulink/optimized-operation-starter/README.md`
 
 This folder does not provide a finished optimized Simulink model. It provides the ML speed policy outputs, reference results, and a weekend assignment for building the optimized speed-advisor branch from the baseline model.
+
+## MATLAB / Simulink Physics And Robot Bridge
+
+The Stage 12 physics and robot bridge model is here:
+
+`matlab-simulink/physics-robot-bridge-model/README.md`
+
+This package includes the fixed `HaulagePhysicsKinematicsBridge.slx` model, the input loader for the Simulink `From Workspace` blocks, the saved Stage 12 input MAT file, and the Turtle robot `/cmd_vel` handoff files.
+
+Use this if Simulink reports missing variables such as `stage12_longitudinal_target_speed_mps` or `stage12_turtle_angular_velocity_radps`.
