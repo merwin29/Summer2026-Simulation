@@ -1,0 +1,38 @@
+Stage 12 team presentation source notes
+======================================
+
+Audience
+--------
+Research team members working on the Simulink haulage model and Turtle robot laboratory demonstration.
+
+Primary local sources
+---------------------
+1. haulage_sim_framework/docs/stage12_physics_kinematics_bridge.md
+   Used for the Stage 12 architecture, physics explanation, model limitations, generated outputs, and next-step framing.
+
+2. haulage_sim_framework/docs/stage12_turtle_robot_handoff.md
+   Used for the robot handoff output, ROS /cmd_vel mapping, safety procedure, and telemetry logging needs.
+
+3. haulage_sim_framework/runStage12PhysicsKinematicsBridge.m
+   Used for the reproduce command and generated output list.
+
+4. haulage_sim_framework/buildStage12PhysicsKinematicsBridgeModel.m
+   Used for model block families, plant assumptions, and generated Simulink model name.
+
+5. haulage_sim_framework/outputs/stage12_physics_kinematics_dashboard.png
+   Used on the dashboard evidence slide.
+
+6. haulage_sim_framework/outputs/stage10_route_3d_preview.png
+   Copied into this presentation folder as a supporting route visualization asset.
+
+7. C:/Users/chimb/Desktop/01 Research/Summer 2026/Paper 2 Robotics Approach/Simulation Design/Meeting 1 Merwin/Research update slides template/figures/route_geometry_openai_annotated_segments_clean_large.png
+   Used as the annotated route schematic on the route context slide.
+
+Template
+--------
+C:/Users/chimb/Desktop/01 Research/Slides Lab Template/Research update slides template
+University of Arizona Beamer theme files and logo assets copied into this presentation folder.
+
+Important caveat used in slides
+-------------------------------
+Stage 12 is presented as a first physics/robot bridge. It is not presented as a final validated OEM-grade haul-truck dynamic model. The current full-scale side uses a fixed loaded mass and a stable loaded-outbound Simscape slice; active braking/retarding is wired but not yet active in the first stable implementation.

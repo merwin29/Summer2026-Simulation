@@ -1,0 +1,106 @@
+% University Arizona Beamer Theme
+% Designed to use UA colors, and
+%  - provide name/title/slide # at the bottom of ea. slide
+%  - provide some clarity to help design alternative styles by others
+% Based on an original by ...
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackage{beamerthemeArizona}
+
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+\ProcessOptionsBeamer
+
+\logo{\hfill\includegraphics[height=0.75cm]{UA_block_color}}
+\titlegraphic{\includegraphics[height=1.0cm]{UA_horiz_color}}
+% \logo{\hfill\includegraphics[width=0.9\beamer@sidebarwidth]{UA_block_blk}}
+% \titlegraphic{\includegraphics[height=0.9\beamer@headheight]{UA_horiz_blk}}
+
+\mode<presentation>
+
+% \useoutertheme{sidebar}
+% \useoutertheme{split}
+\useoutertheme{smoothbars}
+\useinnertheme{rounded}
+
+% we supplement our theme, in case...
+\defbeamertemplate*{footline}{smoothbars theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.65\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \thepage
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\usecolortheme{wildcat}
+\usecolortheme{orchid}
+% \usecolortheme{whale}
+
+\usefonttheme{professionalfonts}
+\setbeamercovered{invisible}
+
+\mode
+<all>
+
+%%% Local Variables: 
+%%% TeX-master: "~/texmf/tex/latex/beamer/test/test.tex"
+%%% End: 
+
+%%%%%%%%%%%% final page
+% this command creates the "We're always looking for new graduate students" page
+% which also has a link to the ECE website.
+\newcommand{\finalpage}
+{
+\frame{
+  \setlength\leftmargin{0pt} 
+  \vskip -14.25em
+  {
+    \hbox to 0pt{\hss\vtop{%
+        \normalsize%
+        \@tempdima=.25\paperwidth%
+        \advance\@tempdima by-3ex%
+        \hsize=\@tempdima%
+        \leftskip=0pt plus 1fill%
+        \rightskip=0pt\relax%
+        \leavevmode
+    % \leavevmode%
+    %\hskip -3em
+    \centering{
+    \includegraphics[width=1.22\paperwidth]{tucsonphoto}
+    }
+    % 
+    }%\kern#2
+    }%
+    \vskip 0pt
+  }
+  % \frametitle{We're always looking for good graduate students.}
+  \vskip -25em
+  \hbox{\begin{beamercolorbox}[wd=0.75\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{final page}
+    \usebeamerfont{final page}
+    \vskip 0.5em
+\vspace{1in}
+\centering
+    \textbf{\large{\color{white} Thanks for your attention \\ Questions?}}
+    \vskip 0.5em
+%    {\Large \url{http://ece.arizona.edu/} }
+  \end{beamercolorbox}
+  }
+  % \includegraphics[width=0.4\paperwidth]{UA_horiz_color}
+}
+}
+
