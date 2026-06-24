@@ -8,6 +8,10 @@ The first hardware goal is modest:
 
 This is **open-loop playback**. It does not yet use odometry feedback to correct the path.
 
+For a meeting-ready walkthrough, start with:
+
+`TEAM_DEMO_STEPS.md`
+
 ## Files
 
 | File | Purpose |
@@ -18,6 +22,7 @@ This is **open-loop playback**. It does not yet use odometry feedback to correct
 | `validate_cmd_vel_schedule.py` | Checks timing, speed caps, and stop command |
 | `publish_cmd_vel_schedule_ros2.py` | ROS 2 publisher for `/cmd_vel` |
 | `publish_cmd_vel_schedule_ros1.py` | ROS 1 publisher for `/cmd_vel` |
+| `TEAM_DEMO_STEPS.md` | Step-by-step team demonstration guide |
 
 ## CSV To ROS Mapping
 
