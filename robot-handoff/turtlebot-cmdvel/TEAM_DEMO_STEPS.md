@@ -76,7 +76,53 @@ publish_cmd_vel_schedule_ros1.py
 TEAM_DEMO_STEPS.md
 ```
 
-## 4. Step 1: Show The Route Output
+## 4. Execution Environment
+
+The demonstration uses two different environments.
+
+| Environment | Main purpose |
+| --- | --- |
+| Windows workstation | MATLAB/Simulink review, CSV inspection, validation, and dry-run preview |
+| Ubuntu/ROS robot computer | TurtleBot bringup, `/cmd_vel` publishing, robot motion, and telemetry logging |
+
+ROS is not a separate operating system. It is robotics middleware that is most commonly run on Ubuntu Linux. The Windows workstation can be used to explain the workflow and inspect the generated outputs, but the actual TurtleBot motion test should run inside the robot's ROS environment.
+
+Windows can be used for the non-hardware checks:
+
+```powershell
+python validate_cmd_vel_schedule.py stage12_turtle_cmd_vel_schedule.csv
+python publish_cmd_vel_schedule_ros2.py stage12_turtle_cmd_vel_schedule.csv --duration 3 --preview-every 5
+```
+
+These commands validate and preview the schedule, but they do not move the robot unless the ROS publisher is armed and connected to the robot's ROS network.
+
+For robot motion, use the Ubuntu/ROS computer connected to the TurtleBot:
+
+```bash
+cd Summer2026-Simulation/robot-handoff/turtlebot-cmdvel
+python3 validate_cmd_vel_schedule.py stage12_turtle_cmd_vel_schedule.csv
+python3 publish_cmd_vel_schedule_ros2.py stage12_turtle_cmd_vel_schedule.csv --duration 3 --preview-every 5
+```
+
+If the operator is working from a Windows laptop, the normal workflow is to connect to the robot computer through SSH:
+
+```powershell
+ssh ubuntu@ROBOT_IP_ADDRESS
+```
+
+Then run the robot-side commands inside the Ubuntu/ROS terminal.
+
+Recommended division for the demonstration:
+
+```text
+Windows workstation:
+    explain Simulink output, route waypoints, CSV schedule, and validation
+
+Ubuntu/ROS robot computer:
+    start TurtleBot bringup, publish /cmd_vel, record /odom, and run hardware tests
+```
+
+## 5. Step 1: Show The Route Output
 
 Open the waypoint file:
 
@@ -90,7 +136,7 @@ Explain:
 - this is the lab version of the haul road geometry;
 - later, these waypoints can become the input to a closed-loop path follower.
 
-## 5. Step 2: Show The Velocity Output
+## 6. Step 2: Show The Velocity Output
 
 Open the command schedule:
 
@@ -105,7 +151,7 @@ Explain:
 - turning speed goes to `/cmd_vel.angular.z`;
 - this first version is intentionally capped at low robot speeds.
 
-## 6. Step 3: Validate The Schedule Without ROS
+## 7. Step 3: Validate The Schedule Without ROS
 
 Run:
 
@@ -125,7 +171,7 @@ Validation passed.
 
 If this fails, do not run the robot. Fix the CSV or regenerate the output.
 
-## 7. Step 4: Dry Run The Publisher
+## 8. Step 4: Dry Run The Publisher
 
 For ROS 2:
 
@@ -149,7 +195,7 @@ Explain:
 - it does not publish to the robot;
 - this is the safe way to verify the schedule before hardware motion.
 
-## 8. Step 5: Start The Robot Bringup
+## 9. Step 5: Start The Robot Bringup
 
 Use the normal TurtleBot startup process for the lab.
 
@@ -179,7 +225,7 @@ rostopic list
 
 Before publishing generated commands, verify that the robot can already receive normal teleoperation commands.
 
-## 9. Step 6: Confirm `/cmd_vel` And `/odom`
+## 10. Step 6: Confirm `/cmd_vel` And `/odom`
 
 For ROS 2:
 
@@ -202,7 +248,7 @@ What to check:
 - odometry changes when the robot moves;
 - no other controller is fighting for `/cmd_vel`.
 
-## 10. Step 7: Wheels-Lifted Test
+## 11. Step 7: Wheels-Lifted Test
 
 Lift the robot wheels off the ground or place the robot on a safe stand.
 
@@ -237,7 +283,7 @@ Check:
 
 If the direction is wrong, stop and check robot frame conventions before floor testing.
 
-## 11. Step 8: Short Floor Test
+## 12. Step 8: Short Floor Test
 
 Use a clear open area.
 
@@ -273,7 +319,7 @@ Watch for:
 
 If anything feels unsafe, stop with `Ctrl+C` or the robot emergency stop.
 
-## 12. Step 9: Record Robot Telemetry
+## 13. Step 9: Record Robot Telemetry
 
 Start logging before the floor test.
 
@@ -306,7 +352,7 @@ commanded speed and turn rate
 actual robot motion from odometry
 ```
 
-## 13. Step 10: Longer Open-Loop Test
+## 14. Step 10: Longer Open-Loop Test
 
 Only do this after the short floor test behaves safely.
 
@@ -332,7 +378,7 @@ python3 publish_cmd_vel_schedule_ros1.py stage12_turtle_cmd_vel_schedule.csv \
 
 This is the full open-loop schedule. The robot may drift because this version does not use odometry feedback for correction.
 
-## 14. How To Explain The Demo To The Team
+## 15. How To Explain The Demo To The Team
 
 Use this short explanation:
 
@@ -340,7 +386,7 @@ Use this short explanation:
 The haul truck simulation produces a route and speed profile. For the robot test, we scale that idea into a TurtleBot command schedule. Each row gives a forward speed and turn rate. The ROS publisher converts those rows into /cmd_vel messages. The robot executes the commands, and we log /cmd_vel and /odom so we can compare what we asked for against what the robot actually did.
 ```
 
-## 15. What This Test Proves
+## 16. What This Test Proves
 
 This test proves:
 
@@ -357,7 +403,7 @@ This test does not yet prove:
 - energy optimization on the physical robot;
 - closed-loop correction using odometry.
 
-## 16. Next Engineering Step
+## 17. Next Engineering Step
 
 The next version should replace open-loop playback with closed-loop waypoint following:
 
@@ -375,4 +421,3 @@ Good first choices:
 - simple waypoint controller;
 - Nav2 waypoint following if using ROS 2;
 - battery and current logging for energy experiments.
-
