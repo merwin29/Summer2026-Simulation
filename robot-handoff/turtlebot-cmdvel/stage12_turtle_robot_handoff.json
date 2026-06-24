@@ -1,0 +1,18 @@
+{
+  "topic": "/cmd_vel",
+  "messageType": "geometry_msgs/Twist",
+  "frameId": "map",
+  "commandRate_hz": 10,
+  "linearVelocityColumn": "linear_velocity_mps",
+  "angularVelocityColumn": "angular_velocity_radps",
+  "linearVelocityMapsTo": "Twist.linear.x",
+  "angularVelocityMapsTo": "Twist.angular.z",
+  "routeWaypointFile": "C:\\Users\\chimb\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-paper\\haulage_sim_framework\\outputs\\stage12_turtle_route_waypoints.csv",
+  "cmdVelScheduleFile": "C:\\Users\\chimb\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-paper\\haulage_sim_framework\\outputs\\stage12_turtle_cmd_vel_schedule.csv",
+  "notes": [
+    "Use this as a low-speed open-loop lab handoff first.",
+    "Keep the robot on blocks or in an open test area during first playback.",
+    "A closed-loop path follower should replace open-loop playback for hardware experiments.",
+    "Grade is included as metadata for experiment logic; the Turtle robot command itself is planar /cmd_vel."
+  ]
+}

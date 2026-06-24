@@ -131,3 +131,11 @@ The Stage 12 physics and robot bridge model is here:
 This package includes the fixed `HaulagePhysicsKinematicsBridge.slx` model, the input loader for the Simulink `From Workspace` blocks, the saved Stage 12 input MAT file, and the Turtle robot `/cmd_vel` handoff files.
 
 Use this if Simulink reports missing variables such as `stage12_longitudinal_target_speed_mps` or `stage12_turtle_angular_velocity_radps`.
+
+## TurtleBot `/cmd_vel` Hardware Test Package
+
+The first robot-side test package is here:
+
+`robot-handoff/turtlebot-cmdvel/README.md`
+
+This package converts the Stage 12 Turtle robot output into a practical robot test workflow. It includes the generated `/cmd_vel` CSV, route waypoints, a no-ROS validation script, ROS 2 and ROS 1 publishers, and a staged safety protocol for wheels-lifted testing, short floor runs, and telemetry logging.
