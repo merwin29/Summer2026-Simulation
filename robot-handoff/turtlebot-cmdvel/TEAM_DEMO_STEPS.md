@@ -55,7 +55,7 @@ For a live robot demo, use three roles.
 
 The safety observer should be able to stop the robot immediately using the robot's emergency stop, power switch, or keyboard interrupt.
 
-## 3. Before The Meeting
+## 3. What to do now?
 
 On the robot computer, clone or copy this folder:
 
