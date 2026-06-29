@@ -220,6 +220,31 @@ Please prepare:
    - final distance.
 5. A list of questions or issues you ran into.
 
+## Exporting The Optimized Output
+
+After running the optimized model, MATLAB should create a variable named `out`.
+
+Run this from the `optimized-operation-starter` folder:
+
+```matlab
+[optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
+```
+
+This creates:
+
+```text
+optimized_timeseries.csv
+optimized_summary.csv
+```
+
+If `out` only shows metadata and no signal data, use:
+
+```text
+simulink_output_export_guide.md
+```
+
+The guide explains how to enable output logging or add a `To Workspace` block to the final `Scenario Output` signal.
+
 ## Stretch Goals
 
 If the core version works:

@@ -14,6 +14,8 @@ The goal is not to retrain the ML model this weekend. The goal is to take the ML
 | `ml_model_metrics.json` | Basic model accuracy and training/test summary |
 | `ml_policy_evaluation_summary.json` | Offline ML policy evaluation summary |
 | `reference_expected_comparison.csv` | Reference final results for checking the Simulink implementation |
+| `export_optimized_simulink_output.m` | MATLAB helper for converting Simulink `out` data to CSV |
+| `simulink_output_export_guide.md` | Step-by-step guide for extracting optimized simulation results |
 
 ## Starting Point
 
@@ -48,3 +50,26 @@ Using the current open-pit route and full-scale haul truck assumptions, the opti
 | fuel saved | | 12.97% |
 
 These are simulation-reference values, not field-validated production claims.
+
+## Exporting Results After Simulation
+
+After running the optimized model, MATLAB should contain a `Simulink.SimulationOutput` variable named `out`.
+
+Use:
+
+```matlab
+[optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
+```
+
+This writes:
+
+```text
+optimized_timeseries.csv
+optimized_summary.csv
+```
+
+If `out` only shows `SimulationMetadata`, open:
+
+`simulink_output_export_guide.md`
+
+That guide explains how to enable output logging or add a `To Workspace` block.
