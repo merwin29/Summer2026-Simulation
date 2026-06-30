@@ -230,6 +230,14 @@ Run this from the `optimized-operation-starter` folder:
 [optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
 ```
 
+If MATLAB reports that `export_optimized_simulink_output` is not recognized, open and run:
+
+```matlab
+run_export_after_simulation
+```
+
+That script adds the current folder to the MATLAB path and then runs the exporter.
+
 This creates:
 
 ```text

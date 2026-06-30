@@ -71,6 +71,32 @@ run:
 [optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
 ```
 
+If MATLAB reports:
+
+```text
+Unrecognized function or variable 'export_optimized_simulink_output'
+```
+
+then MATLAB is not currently looking in the folder that contains the exporter. Use either of these fixes.
+
+Option 1, run the helper script:
+
+```matlab
+run_export_after_simulation
+```
+
+Option 2, add the folder manually:
+
+```matlab
+cd('/home/linuxpc/Downloads/Summer2026-Simulation-main/matlab-simulink/optimized-operation-starter')
+addpath(pwd)
+rehash
+which export_optimized_simulink_output
+[optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
+```
+
+If `which export_optimized_simulink_output` prints `not found`, the local copy of the repository is missing the new export file. Download or pull the latest version of the repository.
+
 This writes:
 
 ```text
@@ -105,6 +131,33 @@ Small differences are acceptable. Large differences usually mean one of the foll
 - the ML target speed is not passing through the safety governor;
 - the output vector order changed;
 - the model is stopping too early or too late.
+
+## Important: Do Not Average Cumulative Signals
+
+The logged scenario vector contains a mix of instantaneous signals and cumulative signals. These should not all be averaged.
+
+| Signal | Correct summary value |
+| --- | --- |
+| `speed_kph` | average only over the active travel portion, or compute `finalDistance_m / travelTime_s` |
+| `distance_m` | final value, not average |
+| `fuel_l` | final value, not average |
+| `fuelRate_lph` | average may be useful, but it is not the final fuel use |
+| `instSfc_l_per_tkm` | do not use simple average for cycle SFC |
+| `productiveTonKm` | final value, not average |
+| `targetSpeed_kph` | average is only descriptive; compare time profile if possible |
+
+The main comparison metrics should be calculated as:
+
+```text
+travelTime_s = time when final route distance is reached
+finalDistance_m = final cumulative distance
+fuel_l = final cumulative fuel
+productiveTonKm = final cumulative t-km
+cycleSfc_l_per_tkm = fuel_l / productiveTonKm
+averageSpeed_kph = finalDistance_m / travelTime_s * 3.6
+```
+
+For example, averaging `cumulativeDistance_m` will produce a value near the middle of the route, not the final route distance. Averaging `cumulativeFuel_l` will produce a midpoint fuel value, not total fuel used.
 
 ## Troubleshooting: `out` Only Shows Metadata
 
@@ -172,4 +225,3 @@ Also include screenshots of:
 - the top-level optimized Simulink model;
 - the `Optimized Speed Advisor` block;
 - the final output table in MATLAB.
-

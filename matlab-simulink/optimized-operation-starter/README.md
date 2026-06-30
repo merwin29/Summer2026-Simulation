@@ -15,6 +15,7 @@ The goal is not to retrain the ML model this weekend. The goal is to take the ML
 | `ml_policy_evaluation_summary.json` | Offline ML policy evaluation summary |
 | `reference_expected_comparison.csv` | Reference final results for checking the Simulink implementation |
 | `export_optimized_simulink_output.m` | MATLAB helper for converting Simulink `out` data to CSV |
+| `run_export_after_simulation.m` | Script to run after simulation if MATLAB does not recognize the export function |
 | `simulink_output_export_guide.md` | Step-by-step guide for extracting optimized simulation results |
 
 ## Starting Point
@@ -60,6 +61,14 @@ Use:
 ```matlab
 [optimizedSamples, optimizedSummary] = export_optimized_simulink_output(out, "optimized");
 ```
+
+If MATLAB says the function is not recognized, open and run:
+
+```matlab
+run_export_after_simulation
+```
+
+That script adds this folder to the MATLAB path before calling the exporter.
 
 This writes:
 
