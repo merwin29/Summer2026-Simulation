@@ -1,0 +1,58 @@
+% this will all be organized in a better folder that will make sense
+% for now I'm just storing the information here
+
+
+  % how to run it in matlab instead
+—-----------------------------------------------------------------------------------------------------
+%robot moves according to the given csv file
+pub = rospublisher('/cmd_vel', 'geometry_msgs/Twist');
+msg = rosmessage(pub);
+T = readtable('stage12_turtle_cmd_vel_schedule.csv');
+linear_velocities = T.linear_velocity_mps;   % replace with your actual column name
+linear_velocities = linear_velocities ./ 3.6;
+angular_velocities = T.angular_velocity_radps;   % replace with your actual column name
+
+rate = rosrate(10);   % Hz — match this to how fast you want to send commands
+for i = 1:length(linear_velocities)
+   msg.Linear.X = linear_velocities(i);   % m/s — convert from kph if needed
+   msg.Angular.Z = angular_velocities(i);              % set angular velocity if needed
+   send(pub, msg);
+   waitfor(rate);
+end
+% Stop the robot after the loop
+msg.Linear.X = 0;
+msg.Angular.Z = 0;
+send(pub, msg);
+—----------------------------------------------------------------------------------------------------------
+
+
+% collects the column of velocities
+T = readtable('stage12_turtle_cmd_vel_schedule.csv');
+linear_velocities = T.linear_velocity_mps(1:1:end); % every other value, converted to m/s 
+time_base = T.time_s(1:1:end); % matching time vector % Package as timeseries for Simulink vel_ts = timeseries(linear_velocities, time_base);
+
+
+%this needs to run before using the turtlebot function
+—-------------------------------------------------------------------------------------------------------------------
+%makes sure that simulink is talking to the robot at the correct rate
+set_param(gcs, 'EnablePacing', 'on')
+set_param(gcs, 'PacingRate', '1')
+set_param(gcs, 'SolverType', 'Fixed-step')
+set_param(gcs, 'FixedStep', '0.1')
+
+% collects colum of linear velocities and makes it run much more evenly
+T = readtable('stage12_turtle_cmd_vel_schedule.csv');
+velocities = T{1:1:end, 'linear_velocity_mps'} / 3.6;   % every other row, m/s
+% Build a proper evenly spaced time vector
+dt = 95.4 / (length(velocities) - 1);
+time_base = (0:dt:95.4)';
+vel_ts = timeseries(velocities, time_base);
+
+%for angular velocity
+T = readtable('stage12_turtle_cmd_vel_schedule.csv');
+ang_velocities = T{1:1:end, 'angular_velocity_radps'};   % every other row, m/s
+% Build a proper evenly spaced time vector
+dt = 95.4 / (length(ang_velocities) - 1);
+time_base = (0:dt:95.4)';
+ang_vel_ts = timeseries(ang_velocities, time_base);
+—------------------------------------------------------------------------------------------------------------------
