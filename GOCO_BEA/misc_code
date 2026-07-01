@@ -1,0 +1,43 @@
+% other code I had to use
+------------------------------------------------------------------
+
+%creates csv file
+colNames = {'speed_kph','cumulativeDistance_m',	'cumulativeFuel_l', 'fuelRate_lph', 'instSfc_l_per_tkm', 'productiveTonKm', 'targetSpeed_kph'}; % use real names
+data_base = out.baseline_operation_log.signals.values;   % 1401x7
+time_base = out.baseline_operation_log.time;             % 1401x1
+T_base = array2table(data_base, 'VariableNames', colNames);
+T_base.Time = time_base;
+writetable(T_base, 'Bea_baseline_output.csv');
+
+
+
+%takes out the last row
+T = readtable('Bea_baseline_output.csv');
+lastRow = table2array(T(end, :));
+
+% creates the summary csv file 
+% note the end is 786 as the example even though the sample time is 1400
+% Pull final values for cumulative signals
+actualDistance_m    = data_base(786, 2);   % cumulativeDistance_m
+baselineFuel_l      = data_base(786, 3);   % cumulativeFuel_l
+productiveTonKm     = data_base(786, 6);   % productiveTonKm
+baselineTime_s      = time_base(786);      % final time = travel time
+% Derived values
+baselineSfc_l_per_tkm = baselineFuel_l / productiveTonKm;
+averageSpeed_kph      = (actualDistance_m / baselineTime_s) * 3.6;
+% Build summary table
+summaryNames = {'plannedRouteDistance_m','actualDistance_m','baselineTime_s', ...
+               'baselineFuel_l','productiveTonKm','baselineSfc_l_per_tkm','averageSpeed_kph'};
+summaryValues = [NaN, actualDistance_m, baselineTime_s, baselineFuel_l, ...
+                productiveTonKm, baselineSfc_l_per_tkm, averageSpeed_kph];
+summaryT = array2table(summaryValues, 'VariableNames', summaryNames);
+writetable(summaryT, 'Bea_baseline_summary.csv');
+
+---------------------------------------------------------
+
+
+% collects the column of velocities
+T = readtable('stage12_turtle_cmd_vel_schedule.csv');
+linear_velocities = T.linear_velocity_mps(1:1:end); % every other value, converted to m/s 
+time_base = T.time_s(1:1:end); % matching time vector % Package as timeseries for Simulink vel_ts = timeseries(linear_velocities, time_base);
+
