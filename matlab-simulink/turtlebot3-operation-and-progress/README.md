@@ -11,7 +11,7 @@
     * Setup/Troubleshoot turtlebot3 that was not pre-installed
     * Troubleshoot with connection or other issues
    
-  - Progress of the Project and Next Steps
+  - Progress Report and Next Steps
 
     
         
