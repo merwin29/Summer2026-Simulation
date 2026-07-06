@@ -6,7 +6,7 @@
      > (that has all firmware and software pre-installed)
      > 
   - How to control turtlebot3 with a list of commands with a csv file
-  - Miscellaneous
+  - Helpful Tips
     
     * Setup/Troubleshoot turtlebot3 that was not pre-installed
     * Troubleshoot with connection or other issues
