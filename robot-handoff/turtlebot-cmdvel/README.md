@@ -23,6 +23,9 @@ For a meeting-ready walkthrough, start with:
 | `publish_cmd_vel_schedule_ros2.py` | ROS 2 publisher for `/cmd_vel` |
 | `publish_cmd_vel_schedule_ros1.py` | ROS 1 publisher for `/cmd_vel` |
 | `TEAM_DEMO_STEPS.md` | Step-by-step team demonstration guide |
+| `TURTLEBOT_SIMULINK_BRIDGE_WORKFLOW.md` | Shared Simulink/ROS bridge workflow and next-step plan |
+| `load_turtlebot_cmdvel_timeseries.m` | MATLAB helper that creates `vel_ts` and `ang_vel_ts` |
+| `prepare_turtlebot_open_loop_workspace.m` | MATLAB setup script for open-loop Simulink playback |
 
 ## CSV To ROS Mapping
 
@@ -168,3 +171,7 @@ waypoints + odometry feedback
 ```
 
 The likely first closed-loop option is Pure Pursuit or a simple waypoint-following controller.
+
+For the shared Simulink/ROS workflow, use:
+
+`TURTLEBOT_SIMULINK_BRIDGE_WORKFLOW.md`
