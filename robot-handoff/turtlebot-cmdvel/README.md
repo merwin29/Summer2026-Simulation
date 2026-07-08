@@ -26,6 +26,10 @@ For a meeting-ready walkthrough, start with:
 | `TURTLEBOT_SIMULINK_BRIDGE_WORKFLOW.md` | Shared Simulink/ROS bridge workflow and next-step plan |
 | `load_turtlebot_cmdvel_timeseries.m` | MATLAB helper that creates `vel_ts` and `ang_vel_ts` |
 | `prepare_turtlebot_open_loop_workspace.m` | MATLAB setup script for open-loop Simulink playback |
+| `TURTLEBOT_WAYPOINT_FOLLOWING.md` | Next-step guide for waypoint + odometry feedback |
+| `load_turtlebot_waypoints.m` | MATLAB helper that loads route waypoints |
+| `compute_turtlebot_waypoint_command.m` | Conservative waypoint controller logic |
+| `run_turtlebot_waypoint_follower_ros1.m` | ROS1/MATLAB starter script for closed-loop waypoint following |
 
 ## CSV To ROS Mapping
 
@@ -175,3 +179,7 @@ The likely first closed-loop option is Pure Pursuit or a simple waypoint-followi
 For the shared Simulink/ROS workflow, use:
 
 `TURTLEBOT_SIMULINK_BRIDGE_WORKFLOW.md`
+
+For the waypoint-following next step, use:
+
+`TURTLEBOT_WAYPOINT_FOLLOWING.md`
