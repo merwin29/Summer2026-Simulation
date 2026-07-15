@@ -1,0 +1,40 @@
+%if using the stage12_turtle_route_waypoints.csv file the positions need to be converted
+% into linear or angular velocities to be able to command the robot
+
+a = readtable('stage12_turtle_route_waypoints.csv');
+xpos = a{1:end, 'x_m'};
+ypos = a{1:end, 'y_m'};
+positions = [xpos./3.6, ypos./3.6];
+
+% Compute differences between consecutive positions
+dx = diff(positions(:,1));
+dy = diff(positions(:,2));
+dt = 5.0;
+t  = dt * ones(size(dx));
+
+% Linear velocity
+v_x = dx ./ t;
+v_y = dy ./ t;
+v_L = sqrt((v_x.^2) + (v_y.^2));
+
+% Angular velocity — use change in heading, not absolute heading
+theta = atan2(dy, dx);
+dtheta = [theta(1); diff(theta)];
+dtheta = atan2(sin(dtheta), cos(dtheta));  % wrap to [-pi, pi]
+v_theta = dtheta ./ t;
+
+% Append zero at the end to stop the robot
+v_L     = [v_L;     0];
+v_theta = [v_theta; 0];
+time    = (0:dt:(length(v_L)-1)*dt)';
+
+% Export to CSV
+T = table(time, v_L, v_theta, 'VariableNames', {'Time_s', 'Linear_vel_ms', 'Angular_vel_rads'});
+writetable(T, 'velocity_commands.csv');
+
+% Timeseries for Simulink
+vel_ts     = timeseries(T.Linear_vel_ms, T.Time_s);
+ang_vel_ts = timeseries(T.Angular_vel_rads, T.Time_s);
+
+disp('CSV written successfully');
+disp(T)
