@@ -9,7 +9,7 @@ positions = [xpos./3.6, ypos./3.6];
 % Compute differences between consecutive positions
 dx = diff(positions(:,1));
 dy = diff(positions(:,2));
-dt = 5.0;
+dt = 8.0; % that was the time frame that it went in a straightline from the previous path
 t  = dt * ones(size(dx));
 
 % Linear velocity
