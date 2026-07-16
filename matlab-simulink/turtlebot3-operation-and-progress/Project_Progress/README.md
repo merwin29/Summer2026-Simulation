@@ -5,3 +5,4 @@
 - turtlebot3_odom_waypoint.xlsx--------------> position recorded
 - turtlebot_odomtest.csv---------------------> linear/angular velocities recorded
 - turtlebot3_odomtest_error.csv -------------> Error of the linear and angular commands
+- waypoint_conversion_code ------------------> code use to convert given points into linear/angular velocity commands
