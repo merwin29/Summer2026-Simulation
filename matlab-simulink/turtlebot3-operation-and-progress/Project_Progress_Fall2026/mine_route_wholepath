@@ -1,0 +1,43 @@
+cd("/home/linuxpc/Downloads/Summer2026-Simulation-main/matlab-simulink/physics-robot-bridge-model/outputs/MineSite");
+
+a = readtable('route_points.csv');
+xpos = a{1:end, 'x'};
+ypos = a{1:end, 'y'};
+
+map_scale = 13;   % recommended — 45.8m x 69.4m space, 0.10 m/s
+dt        = 0.72; % fixed by angular velocity limit
+
+% Full route — close the loop
+positions = [xpos./map_scale, ypos./map_scale; xpos(1)./map_scale, ypos(1)./map_scale];
+
+dx = diff(positions(:,1));
+dy = diff(positions(:,2));
+t  = dt * ones(size(dx));
+
+v_x = dx ./ t;
+v_y = dy ./ t;
+v_L = sqrt((v_x.^2) + (v_y.^2));
+v_L = min(v_L, 0.22);
+
+theta  = atan2(dy, dx);
+dtheta = [theta(1); diff(theta)];
+dtheta = atan2(sin(dtheta), cos(dtheta));
+v_theta = dtheta ./ t;
+v_theta = max(min(v_theta, 2.84), -2.84);
+
+v_L     = [v_L;     0];
+v_theta = [v_theta; 0];
+time    = (0:dt:(length(v_L)-1)*dt)';
+
+cd("/home/linuxpc/Downloads/Summer2026-Simulation-main/matlab-simulink/physics-robot-bridge-model/outputs");
+T = table(time, v_L, v_theta, 'VariableNames', {'Time_s', 'Linear_vel_ms', 'Angular_vel_rads'});
+writetable(T, 'velocity_commands.csv');
+
+vel_ts     = timeseries(T.Linear_vel_ms,    T.Time_s);
+ang_vel_ts = timeseries(T.Angular_vel_rads, T.Time_s);
+
+fprintf('Total waypoints:      %d\n',     length(xpos));
+fprintf('Average linear speed: %.4f m/s\n',  mean(v_L(1:end-1)));
+fprintf('Max angular velocity: %.4f rad/s\n', max(abs(v_theta)));
+fprintf('Total run time:       %.1f s\n',     time(end));
+disp('CSV written successfully');
